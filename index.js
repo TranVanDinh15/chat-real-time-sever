@@ -32,6 +32,9 @@ var io = require('socket.io')(server, {
         origin: process.env.REACT_URL,
     },
 });
+app.get('/', (req, res) => {
+    return res.send('Hello !!');
+});
 // ---------deployment----------
 
 // const __dirname1 = path.resolve();
