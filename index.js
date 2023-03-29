@@ -34,19 +34,19 @@ var io = require('socket.io')(server, {
 });
 // ---------deployment----------
 
-const __dirname1 = path.resolve();
-const parentDir = path.join(__dirname, '..');
-console.log(parentDir);
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(parentDir, '/mernchatfe/build')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(parentDir, 'mernchatfe', 'build', 'index.html'));
-    });
-} else {
-    app.get('/', (req, res) => {
-        res.send('API is Running SuccessFully');
-    });
-}
+// const __dirname1 = path.resolve();
+// const parentDir = path.join(__dirname, '..');
+// console.log(parentDir);
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.join(parentDir, '/mernchatfe/build')));
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(parentDir, 'mernchatfe', 'build', 'index.html'));
+//     });
+// } else {
+//     app.get('/', (req, res) => {
+//         res.send('API is Running SuccessFully');
+//     });
+// }
 
 // ---------deployment----------
 
