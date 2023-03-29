@@ -23,8 +23,8 @@ cloudinary.config({
     api_key: '527248261528922',
     api_secret: 'H5EE9qM0dvgr4b9VXzN-PK-cBL4',
 });
-const server = app.listen(process.env.SERVER_URL, () => {
-    console.log(`Example app listening on port ${process.env.SERVER_URL}`);
+const server = app.listen(process.env.PORT, () => {
+    console.log(`Example app listening on port ${process.env.PORT}`);
 });
 var io = require('socket.io')(server, {
     pingTimeout: 60000,
