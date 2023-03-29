@@ -1,0 +1,11 @@
+const express = require('express');
+const chatController = require('../controller/chatController');
+const middelWare = require('../middleWare/middleware');
+const router = express.Router();
+router.post('/chat', middelWare.requireSigin, chatController.accessChat);
+router.post('/fetchChat', middelWare.requireSigin, chatController.fetchChat);
+router.post('/createGroupChat', middelWare.requireSigin, chatController.createGroupChat);
+router.put('/renameChat', middelWare.requireSigin, chatController.renameGroup);
+router.put('/addUserChat', middelWare.requireSigin, chatController.addtoGroup);
+router.put('/removeUserChat', middelWare.requireSigin, chatController.removeGroup);
+module.exports = router;
