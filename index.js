@@ -29,7 +29,7 @@ const server = app.listen(process.env.PORT, () => {
 var io = require('socket.io')(server, {
     pingTimeout: 60000,
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://chat-real-time-pro.vercel.app',
     },
 });
 // ---------deployment----------
