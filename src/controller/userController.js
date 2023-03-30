@@ -6,9 +6,9 @@ const uploadImage = (fileUpload) => {
     return new Promise(async (resolve, reject) => {
         let picture = await cloudinary.uploader.upload(fileUpload, (error, result) => {
             resolve({
-                url: result.secure_url,
-                asset_id: result.asset_id,
-                public_id: result.public_id,
+                url: result?.secure_url,
+                asset_id: result?.asset_id,
+                public_id: result?.public_id,
             });
         });
     });
