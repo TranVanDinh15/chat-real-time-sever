@@ -7,6 +7,7 @@ const connectDb = require('./src/config/connect');
 const userRouter = require('./src/router/userRouter');
 const chatRouter = require('./src/router/chatRouter');
 const messageRouter = require('./src/router/messageRouter');
+// const severs= require('http').createServer(app)
 const cloudinary = require('cloudinary').v2;
 app.use(cors());
 app.use(express.json());
@@ -33,9 +34,9 @@ const server = app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}`);
 });
 var io = require('socket.io')(server, {
-    pingTimeout: 60000,
     cors: {
         origin: '*',
+        methods: ['GET', 'POST'],
     },
 });
 app.get('/', (req, res) => {
