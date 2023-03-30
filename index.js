@@ -18,6 +18,13 @@ connectDb();
 app.use('/api', userRouter);
 app.use('/api', chatRouter);
 app.use('/api', messageRouter);
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 cloudinary.config({
     cloud_name: 'dqwzzgavd',
     api_key: '527248261528922',
