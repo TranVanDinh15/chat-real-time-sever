@@ -29,7 +29,7 @@ const server = app.listen(process.env.PORT, () => {
 var io = require('socket.io')(server, {
     pingTimeout: 60000,
     cors: {
-        origin: process.env.REACT_URL,
+        origin: '*:*',
     },
 });
 app.get('/', (req, res) => {
