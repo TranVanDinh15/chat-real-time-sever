@@ -8,7 +8,6 @@ const userRouter = require('./src/router/userRouter');
 const chatRouter = require('./src/router/chatRouter');
 const messageRouter = require('./src/router/messageRouter');
 const cloudinary = require('cloudinary').v2;
-const path = require('path');
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true, parameterLimit: 100000, limit: '500mb' }));
