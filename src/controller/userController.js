@@ -28,7 +28,7 @@ const registerUser = (req, res) => {
                 resolve(res.status(400).json('user Already exist'));
             } else {
                 // const picture = await uploadImage(req?.file?.path);
-                console.log(picture);
+                // console.log(picture);
                 const user = await modelUser.create({
                     name,
                     email,
