@@ -35,7 +35,7 @@ const server = app.listen(process.env.PORT, () => {
 });
 var io = require('socket.io')(server, {
     cors: {
-        origin: '*',
+        origin: 'http://localhost:3000',
         methods: ['GET', 'POST'],
     },
 });
@@ -45,14 +45,14 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('connect to socket.io');
-    socket.on('setup', (userData) => {
-        socket.join(userData);
-        socket.emit('connection');
-    });
-    socket.on('join chat', (room) => {
-        socket.join(room);
-        console.log('User join room: ' + room);
-    });
+    // socket.on('setup', (userData) => {
+    //     socket.join(userData);
+    //     socket.emit('connection');
+    // });
+    // socket.on('join chat', (room) => {
+    //     socket.join(room);
+    //     console.log('User join room: ' + room);
+    // });
     socket.on('typing', (room) => socket.in(room).emit('typing'));
     socket.on('stop typing', (room) => socket.in(room).emit('stop typing'));
 

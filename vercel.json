@@ -8,8 +8,12 @@
     ],
     "routes": [
         {
+            "src": "/socket.io",
+            "dest": "http://localhost:3306/socket.io"
+        },
+        {
             "src": "/(.*)",
-            "dest": "/"
+            "dest": "/index.html"
         }
     ]
 }
