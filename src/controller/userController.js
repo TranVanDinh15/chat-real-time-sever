@@ -16,7 +16,8 @@ const uploadImage = (fileUpload) => {
 const registerUser = (req, res) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log(req.file);
+            // console.log(req.body);
+            // console.log(req.file);
             const { name, email, password } = req.body;
             if (!name || !email || !password) {
                 resolve(res.status(400).json('Please Enter All the Feilds'));
