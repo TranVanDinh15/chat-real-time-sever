@@ -7,7 +7,6 @@ const connectDb = require('./src/config/connect');
 const userRouter = require('./src/router/userRouter');
 const chatRouter = require('./src/router/chatRouter');
 const messageRouter = require('./src/router/messageRouter');
-// const severs= require('http').createServer(app)
 const cloudinary = require('cloudinary').v2;
 app.use(cors());
 app.use(express.json());
@@ -45,14 +44,14 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('connect to socket.io');
-    // socket.on('setup', (userData) => {
-    //     socket.join(userData);
-    //     socket.emit('connection');
-    // });
-    // socket.on('join chat', (room) => {
-    //     socket.join(room);
-    //     console.log('User join room: ' + room);
-    // });
+    socket.on('setup', (userData) => {
+        socket.join(userData);
+        socket.emit('connection');
+    });
+    socket.on('join chat', (room) => {
+        socket.join(room);
+        console.log('User join room: ' + room);
+    });
     socket.on('typing', (room) => socket.in(room).emit('typing'));
     socket.on('stop typing', (room) => socket.in(room).emit('stop typing'));
 

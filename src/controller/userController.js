@@ -2,17 +2,17 @@ const modelUser = require('../model/userModel');
 const generateJWT = require('../config/generateJWT');
 const bcrypt = require('bcrypt');
 const cloudinary = require('cloudinary').v2;
-// const uploadImage = (fileUpload) => {
-//     return new Promise(async (resolve, reject) => {
-//         let picture = await cloudinary.uploader.upload(fileUpload, (error, result) => {
-//             resolve({
-//                 url: result?.secure_url,
-//                 asset_id: result?.asset_id,
-//                 public_id: result?.public_id,
-//             });
-//         });
-//     });
-// };
+const uploadImage = (fileUpload) => {
+    return new Promise(async (resolve, reject) => {
+        let picture = await cloudinary.uploader.upload(fileUpload, (error, result) => {
+            resolve({
+                url: result?.secure_url,
+                asset_id: result?.asset_id,
+                public_id: result?.public_id,
+            });
+        });
+    });
+};
 const registerUser = (req, res) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -25,12 +25,12 @@ const registerUser = (req, res) => {
                 console.log(existUser);
                 resolve(res.status(400).json('user Already exist'));
             } else {
-                // const picture = await uploadImage(req?.file?.path);
+                const picture = await uploadImage(req?.file?.path);
                 const user = await modelUser.create({
                     name,
                     email,
                     password,
-                    // picture: picture.url,
+                    picture: picture.url,
                 });
                 if (user) {
                     resolve(
